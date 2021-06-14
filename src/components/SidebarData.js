@@ -11,7 +11,7 @@ import { BiMessageSquareDetail, BiSupport } from 'react-icons/bi';
 const SidebarData = [
   {
     title: 'Overview',
-    path: '/overview',
+    // path: '/overview',
     icon: <AiFillHome />,
     iconClosed: <RiArrowDownSFill/>,
     iconOpened: <RiArrowUpSFill/>,
@@ -30,7 +30,7 @@ const SidebarData = [
   },
   {
     title: 'Reports',
-    path: '/reports',
+    // path: '/reports',
     icon: <IoNewspaperSharp />,
     iconClosed: <RiArrowDownSFill/>,
     iconOpened: <RiArrowUpSFill/>,

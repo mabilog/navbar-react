@@ -7,8 +7,7 @@ import { FaBars, FaTimes, FaReact } from 'react-icons/fa';
 import SidebarData from './SidebarData';
 import Submenu from './Submenu';
 
-import Navbar from './Navbar';
-
+import NavbarData from './NavbarData';
 
 const Sidebar = () => {
   const [sidebar, setSidebar] = useState(false);
@@ -18,11 +17,19 @@ const Sidebar = () => {
   return (
     <>
     <Nav>
-      <NavIcon to="#">
+      <NavIcon to="/">
         <FaBars onClick={showSidebar}/> 
-      </NavIcon>
         <Title> React <FaReact/></Title>
-        <Navbar />
+      </NavIcon>
+      <Navbar>
+        {NavbarData.map((item, index) => {
+          return (
+          <li key={index} >
+            <NavLink to={item.path}>{item.title} {item.icon}</NavLink>
+          </li>
+          )}
+        )}
+      </Navbar>
     </Nav>
       <SidebarNav sidebar={sidebar}>
         <SidebarWrapper >
@@ -39,6 +46,7 @@ const Sidebar = () => {
 }
 
 const Nav = styled.div`
+  position: sticky;
   background: #15171c;
   height: 80px;
   display: flex;
@@ -54,6 +62,7 @@ const NavIcon  = styled(Link)`
   justify-content: flex-start;
   align-items: center;
   color: white; 
+  text-decoration: none;
 `;
 
 const SidebarNav = styled.nav`
@@ -71,7 +80,6 @@ const SidebarNav = styled.nav`
 
 const SidebarWrapper = styled.div`
   width: 100%;
-
 `;
 
 const Title = styled.span`
@@ -82,4 +90,27 @@ const Title = styled.span`
   color: white;
   font-size: 2rem;
 `;
+
+const Navbar = styled.ul`
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  list-style: none;
+  position: absolute;
+  right: 30px;
+  /* color: white;
+  text-decoration: none;
+  list-style: none; */
+`;
+
+const NavLink = styled(Link)`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+  list-style: none;
+  gap: 5px;
+`;
+
 export default Sidebar
